@@ -40,6 +40,7 @@ typedef struct	s_champlion
 	t_instr		*code;
 	t_label		*labels;
 	int 		code_size;
+	int			fd;
 	char 		*name;
 	char 		*comment;
 }				t_champion;
@@ -49,5 +50,18 @@ void		error_exit(int code);
 
 //validate_file.c
 int			validate_file(int ac, char **av);
+
+//create_champ.c
+t_champion	*create_champ(int fd);
+
+//name_comment.c
+char 		*get_champ_string(t_champion **champ, char *line, int i);
+char 		*find_name(t_champion **champ, char *line);
+char 		*find_comment(t_champion **champ, char *line);
+void 		get_name_comment(t_champion **champ);
+
+//name_comment_helper.c
+void 		go_to_new_line(t_champion **champ, char **line);
+void		check_end_of_line(char *line, int i);
 
 #endif
