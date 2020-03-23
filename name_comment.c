@@ -100,7 +100,7 @@ void 			get_name_comment(t_champion **champ)
 	current_string = 0;
 	(*champ)->name = NULL;
 	(*champ)->comment = NULL;
-	while (get_next_line((*champ)->fd, &line) > 0 && flag_found < 2)
+	while (flag_found < 2 && get_next_line((*champ)->fd, &line) > 0)
 	{
 		current_string++;
 		flag_found += check_name_line(champ, line);

@@ -7,52 +7,96 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-int 				current_string;
+# define REG_BYTE 1
+# define IND_BYTE 2
+# define DIR_BYTE 4
 
 typedef struct		s_arg
 {
-	short			type;
+	int				type;
 	int				value;
-	struct s_arg	*next;
+	char 			*label_name;
 }					t_arg;
+
+typedef struct		s_type
+{
+	char			*name;
+	int				count_args;
+	t_arg_type		bit_args[3];
+	int 			number;
+}					t_type;
 
 typedef struct		s_instr
 {
-	char 			*bytestr;
-	//char 			operation;
-	//char			types;
-	int 			size;
+	t_type			type;
 	int				first_byte;
-	t_arg			*args;
-	int 			is_ready;
+	t_arg			*args;		//Второй проход будет по всем меткам и с заполнением байт-строки для конкретной инструкции
+	unsigned char	instr_byte;
+	int 			full_size;
+	char 			*bytestr;
 	struct s_instr	*next;
 }					t_instr;
 
 typedef struct		s_label
 {
 	t_instr			*instr;
-	int				first_byte;
+	char			*name;
 	struct s_label	*next;
 }					t_label;
 
-typedef struct	s_champlion
+typedef struct		s_champlion
 {
-	t_instr		*code;
-	t_label		*labels;
-	int 		code_size;
-	int			fd;
-	char 		*name;
-	char 		*comment;
-}				t_champion;
+	t_instr			*code;
+	t_label			*labels;
+	int 			code_size;
+	int				fd;
+	char 			*name;
+	char 			*comment;
+}					t_champion;
 
-//error_exit.c
-void		error_exit(int code);
+extern int			current_string;
 
-//validate_file.c
-int			validate_file(int ac, char **av);
+extern t_type		type_tab[17];
+
+//TODO исправить гнл на выдачу ошибки при отстутсвии перехода на следующую строку
 
 //create_champ.c
 t_champion	*create_champ(int fd);
+
+//code_analyzer.c
+int			is_space_line(char *line);
+int			is_label(char *line);
+int			compare_instr(char *line);
+int		 	is_instr(char *line);
+void		get_code(t_champion **champ);
+
+//get_instr.c
+void 		add_new_instr(t_champion **champ, char *line);
+void		get_instr(t_champion **champ, char *line);
+
+//fill_instr.c
+int			set_argtype(int argtype, t_instr **new_instr, int num_arg, char *line);
+void		get_args_type(char *line, t_instr **new_instr);
+t_instr		*fill_instr(t_champion **champ, t_instr *new_instr, char *line);
+
+//set_argument.c
+char 		*set_arglabel(char *line);
+int			set_argvalue(char *line, int argtype, int num_arg);
+void 		set_argument(t_instr **new_instr, char *line, int num_arg);
+
+//set_byte_values.c
+int			get_first_byte(t_champion **champ);
+int 		get_full_size(t_instr *new_instr);
+
+//error_exit.c
+void 		ft_printf_error(char *line);
+void		error_exit(int code);
+
+//error_args.c
+void		error_args(int code, int num_arg);
+
+//validate_file.c
+int			validate_file(int ac, char **av);
 
 //name_comment.c
 char 		*get_champ_string(t_champion **champ, char *line, int i);

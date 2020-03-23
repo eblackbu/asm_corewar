@@ -32,7 +32,10 @@ void	error_format(int code)
 
 void 	error_asm(int code)
 {
-
+	if (code == ERR_LABEL_CHARS)
+		ft_printf_error("forbidden symbols are used in label\n");
+	if (code == ERR_EMPTY_LABEL)
+		ft_printf_error("label can't be empty\n");
 }
 
 void	error_exit(int code)
@@ -41,5 +44,7 @@ void	error_exit(int code)
 		error_file(code);
 	else if (code < 20)
 		error_format(code);
+	else if (code < 30)
+		error_asm(code);
 	exit(-1);
 }

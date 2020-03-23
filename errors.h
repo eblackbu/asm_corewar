@@ -11,6 +11,12 @@
 # define ERR_DOUBLE_NAME 13
 # define ERR_DOUBLE_COMMENT 14
 
+# define ERR_LABEL_CHARS 20
+# define ERR_EMPTY_LABEL 21
 
+# define ERR_INV_TYPE 100
+# define ERR_COUNT_ARGS 101
+# define ERR_INV_ARG 102
+# define ERR_INV_REG 103
 
 #endif
