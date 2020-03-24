@@ -1,9 +1,10 @@
 #include "asm.h"
 
-void		add_new_label(t_champion **champ, char *line, int start, int len)
+void		add_new_label(t_champion **champ, char *line, int len)
 {
 	t_label	*tmp;
 	t_label	*tmp_prev;
+	char 	*new_line;
 
 	tmp = (*champ)->labels;
 	tmp_prev = NULL;
@@ -15,19 +16,45 @@ void		add_new_label(t_champion **champ, char *line, int start, int len)
 	if (!(tmp = (t_label*)malloc(sizeof(t_label))))
 		exit(-1);
 	tmp->name = ft_strnew(len);
-	tmp->name = ft_strncpy(tmp->name, &line[start], len);
+	tmp->name = ft_strncpy(tmp->name, line, len);
 	tmp->next = NULL;
 	if (tmp_prev)
 		tmp_prev->next = tmp;
 	else
 		(*champ)->labels = tmp;
-	//find_instr_line(champ, line); //TODO инструкция в любом случае буде записана в последнюю метку, либо будет добавлена новая метка
+	new_line = ft_strdup(ft_strchr(line, LABEL_CHAR) + 1);
+	ft_strdel(&line);
+	tmp->instr = find_instr_line(champ, &new_line);
+}
+
+t_instr		*find_instr_line(t_champion **champ, char **line)
+{
+	while (*line)
+	{
+		if (is_space_line(*line))
+		{
+			get_next_line((*champ)->fd, line);
+			current_string++;
+			continue ;
+		}
+		else if (is_instr(*line))
+			return (get_instr(champ, *line));
+		else if (is_label(*line))
+		{
+			get_label(champ, *line);
+			return (NULL);
+		}
+		else
+			error_exit(ERR_UNEXP_SYM);
+	}
+	return (NULL);
 }
 
 void		get_label(t_champion **champ, char *line)
 {
 	int 	start;
 	int 	len;
+	char 	*new_line;
 
 	start = 0;
 	len = 0;
@@ -37,6 +64,8 @@ void		get_label(t_champion **champ, char *line)
 		len++;
 	if (len == 0)
 		error_exit(ERR_EMPTY_LABEL);
-	add_new_label(champ, line, start, len);
+	new_line = ft_strdup(&line[start]);
+	ft_strdel(&line);
+	add_new_label(champ, new_line, len);
 }
 

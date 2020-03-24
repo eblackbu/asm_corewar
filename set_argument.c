@@ -7,7 +7,9 @@ int			count_digits(int value, int n)
 	count = 0;
 	if (value == 0)
 		return (1);
-	while (value > 0)
+	if (value < 0)
+		count++;
+	while (value != 0)
 	{
 		value /= n;
 		count++;
@@ -64,7 +66,7 @@ void 		set_argument(t_instr **new_instr, char *line, int num_arg)
 		error_args(ERR_INV_ARG, num_arg);
 	if (line[i] == LABEL_CHAR)
 		(*new_instr)->args[num_arg].label_name = set_arglabel(&line[1]);
-	else if (ft_isdigit(line[i]))
+	else if (ft_atoi(&line[i]) || line[i] == '0')
 	{
 		(*new_instr)->args[num_arg].label_name = NULL;
 		(*new_instr)->args[num_arg].value = set_argvalue(line, (*new_instr)->args[num_arg].type, num_arg);

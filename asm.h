@@ -70,9 +70,13 @@ int			compare_instr(char *line);
 int		 	is_instr(char *line);
 void		get_code(t_champion **champ);
 
+
+/*
+ * INSTRUCTIONS
+ */
 //get_instr.c
-void 		add_new_instr(t_champion **champ, char *line);
-void		get_instr(t_champion **champ, char *line);
+t_instr * add_new_instr(t_champion **champ, char *line);
+t_instr * get_instr(t_champion **champ, char *line);
 
 //fill_instr.c
 int			set_argtype(int argtype, t_instr **new_instr, int num_arg, char *line);
@@ -88,6 +92,18 @@ void 		set_argument(t_instr **new_instr, char *line, int num_arg);
 int			get_first_byte(t_champion **champ);
 int 		get_full_size(t_instr *new_instr);
 
+
+/*
+ * LABELS
+ */
+// get_label.c
+void		add_new_label(t_champion **champ, char *line, int len);
+t_instr * find_instr_line(t_champion **champ, char **line);
+void		get_label(t_champion **champ, char *line);
+
+/*
+ * ERRORS
+ */
 //error_exit.c
 void 		ft_printf_error(char *line);
 void		error_exit(int code);
@@ -95,6 +111,10 @@ void		error_exit(int code);
 //error_args.c
 void		error_args(int code, int num_arg);
 
+
+/*
+ * NAME AND COMMENT
+ */
 //validate_file.c
 int			validate_file(int ac, char **av);
 

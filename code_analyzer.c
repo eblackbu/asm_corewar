@@ -79,15 +79,12 @@ void		get_code(t_champion **champ)
 	while (get_next_line((*champ)->fd, &line) > 0)
 	{
 		current_string++;
-		//ft_putnbr(current_string);
 		if (is_space_line(line))
 			continue ;
 		else if (is_instr(line))
 			get_instr(champ, line);
-		/*
 		else if (is_label(line))
 			get_label(champ, line);
-		 */
 		else
 			error_exit(ERR_UNEXP_SYM);
 	}
