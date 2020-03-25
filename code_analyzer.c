@@ -88,5 +88,7 @@ void		get_code(t_champion **champ)
 		else
 			error_exit(ERR_UNEXP_SYM);
 	}
+	(*champ)->code_size = get_code_size(*champ);
+	fill_labels(champ);
 }
 

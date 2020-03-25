@@ -41,6 +41,7 @@ typedef struct		s_label
 {
 	t_instr			*instr;
 	char			*name;
+	int				first_byte;
 	struct s_label	*next;
 }					t_label;
 
@@ -61,6 +62,7 @@ extern t_type		type_tab[17];
 //TODO исправить гнл на выдачу ошибки при отстутсвии перехода на следующую строку
 
 //create_champ.c
+int			get_code_size(t_champion *champ);
 t_champion	*create_champ(int fd);
 
 //code_analyzer.c
@@ -75,8 +77,8 @@ void		get_code(t_champion **champ);
  * INSTRUCTIONS
  */
 //get_instr.c
-t_instr * add_new_instr(t_champion **champ, char *line);
-t_instr * get_instr(t_champion **champ, char *line);
+t_instr		*add_new_instr(t_champion **champ, char *line);
+t_instr		*get_instr(t_champion **champ, char *line);
 
 //fill_instr.c
 int			set_argtype(int argtype, t_instr **new_instr, int num_arg, char *line);
@@ -98,8 +100,17 @@ int 		get_full_size(t_instr *new_instr);
  */
 // get_label.c
 void		add_new_label(t_champion **champ, char *line, int len);
-t_instr * find_instr_line(t_champion **champ, char **line);
+t_instr		*find_instr_line(t_champion **champ, char **line);
 void		get_label(t_champion **champ, char *line);
+
+//fill_labels.c
+t_instr		*find_instr_to_label(t_label *label_to_find);
+void		fill_labels(t_champion **champ);
+
+//replace_labels.c
+int get_indirent_value(t_champion **champ, t_instr *instr, int arg_num);
+t_instr 	*check_labels(t_champion **champ, t_instr *instr);
+void		replace_labels(t_champion **champ);
 
 /*
  * ERRORS

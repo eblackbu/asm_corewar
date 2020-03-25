@@ -26,6 +26,6 @@ t_champion		*create_champ(int fd)
 	champ->code = NULL;
 	champ->labels = NULL;
 	get_code(&champ);
-	champ->code_size = get_code_size(champ);
+	replace_labels(&champ);
 	return (champ);
 }

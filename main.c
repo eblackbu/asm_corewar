@@ -14,9 +14,9 @@ void	print_args(t_instr *code)
 		printf("%s ", tmp->type.name);
 		while (i < tmp->type.count_args)
 		{
-			if (tmp->args[i].label_name)
-				printf(":%s, ", tmp->args[i].label_name);
-			else
+			//if (tmp->args[i].label_name)
+				//printf(":%s, ", tmp->args[i].label_name);
+			//else
 				printf("%d, ", tmp->args[i].value);
 			i++;
 		}

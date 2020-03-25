@@ -18,5 +18,6 @@
 # define ERR_COUNT_ARGS 101
 # define ERR_INV_ARG 102
 # define ERR_INV_REG 103
+# define ERR_UNKNOWN_LABEL 104
 
 #endif
