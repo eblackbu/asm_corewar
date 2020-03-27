@@ -1,6 +1,6 @@
 #include "asm.h"
 
-int get_indirent_value(t_champion **champ, t_instr *instr, int arg_num)
+int 		get_indirent_value(t_champion **champ, t_instr *instr, int arg_num)
 {
 	t_label	*tmp;
 
@@ -33,6 +33,7 @@ void		replace_labels(t_champion **champ)
 {
 	t_instr *tmp;
 
+	current_string = 0;
 	tmp = (*champ)->code;
 	while (tmp)
 	{

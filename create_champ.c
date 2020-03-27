@@ -15,13 +15,32 @@ int				get_code_size(t_champion *champ)
 	return (code_size);
 }
 
-t_champion		*create_champ(int fd)
+char 		*set_filename(char *filename)
+{
+	char	*str;
+	int 	len;
+	int		i;
+
+	len = ft_strlen(filename) - 2;
+	str = ft_strnew(len + 4);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = filename[i];
+		i++;
+	}
+	ft_strcpy(&str[i], ".cor");
+	return (str);
+}
+
+t_champion 	*create_champ(int fd, char *filename)
 {
 	t_champion	*champ;
 
 	if (!(champ = (t_champion*)malloc(sizeof(t_champion))))
 		exit(-1);
 	champ->fd = fd;
+	champ->file_name = set_filename(filename);
 	get_name_comment(&champ);
 	champ->code = NULL;
 	champ->labels = NULL;

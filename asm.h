@@ -53,6 +53,7 @@ typedef struct		s_champlion
 	int				fd;
 	char 			*name;
 	char 			*comment;
+	char 			*file_name;
 }					t_champion;
 
 extern int			current_string;
@@ -63,10 +64,10 @@ extern t_type		type_tab[17];
 
 //create_champ.c
 int			get_code_size(t_champion *champ);
-t_champion	*create_champ(int fd);
+t_champion *create_champ(int fd, char *filename);
 
 //code_analyzer.c
-int			is_space_line(char *line);
+int			is_space_line(const char *line);
 int			is_label(char *line);
 int			compare_instr(char *line);
 int		 	is_instr(char *line);
@@ -108,9 +109,23 @@ t_instr		*find_instr_to_label(t_label *label_to_find);
 void		fill_labels(t_champion **champ);
 
 //replace_labels.c
-int get_indirent_value(t_champion **champ, t_instr *instr, int arg_num);
+int			get_indirent_value(t_champion **champ, t_instr *instr, int arg_num);
 t_instr 	*check_labels(t_champion **champ, t_instr *instr);
 void		replace_labels(t_champion **champ);
+
+/*
+ * BYTE_STRINGS
+ */
+//byte_strings.c
+
+void		make_byte_strings(t_champion **champ);
+
+/*
+ * PRINT_TO_FILE
+ */
+//print_to_file.c
+void		print_exec_magic(int fd);
+void		print_to_file(t_champion **champ);
 
 /*
  * ERRORS
@@ -139,4 +154,15 @@ void 		get_name_comment(t_champion **champ);
 void 		go_to_new_line(t_champion **champ, char **line);
 void		check_end_of_line(char *line, int i);
 
+/*
+ * UTILS
+ */
+//free_all.c
+void 		free_instr(t_instr *instr);
+void		free_labels(t_label *label);
+void 		free_all(t_champion *champ);
+
+//utils.c
+int			count_digits(int value, int n);
+char		*reverse_string(char *str, int n);
 #endif

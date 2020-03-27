@@ -4,6 +4,7 @@
 # define ERR_NO_AC 1
 # define ERR_FILE_NOT_S 2
 # define ERR_NO_FILE 3
+# define ERR_FILE_NOT_CREATED 4
 
 # define ERR_UNEXP_SYM 10
 # define ERR_UNEXP_EOF 11

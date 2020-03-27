@@ -59,11 +59,15 @@ int 	main(int ac, char **av)
 	int			fd;
 
 	fd = validate_file(ac, av);
-	champ = create_champ(fd);
-	ft_putendl(champ->name);
-	ft_putendl(champ->comment);
-	print_labels(champ->labels);
-	print_args(champ->code);
-	//print_to_file(champ);
+	champ = create_champ(fd, av[1]);
+	close(fd);
+	//ft_putendl(champ->file_name);
+	//ft_putendl(champ->name);
+	//ft_putendl(champ->comment);
+	//print_labels(champ->labels);
+	//print_args(champ->code);
+	make_byte_strings(&champ);
+	print_to_file(&champ);
+	free_all(champ);
 	return (0);
 }

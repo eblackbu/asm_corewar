@@ -104,5 +104,6 @@ void 			get_name_comment(t_champion **champ)
 	{
 		current_string++;
 		flag_found += check_name_line(champ, line);
+		ft_strdel(&line);
 	}
 }

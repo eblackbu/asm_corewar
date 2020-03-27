@@ -1,8 +1,6 @@
 #include "asm.h"
 
-//extern t_type				type_tab[17];
-
-int			is_space_line(char *line)
+int			is_space_line(const char *line)
 {
 	int		i;
 
@@ -80,7 +78,10 @@ void		get_code(t_champion **champ)
 	{
 		current_string++;
 		if (is_space_line(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		else if (is_instr(line))
 			get_instr(champ, line);
 		else if (is_label(line))
