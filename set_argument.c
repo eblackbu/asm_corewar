@@ -36,7 +36,7 @@ int			set_argvalue(char *line, int argtype, int num_arg)
 		error_args(ERR_INV_ARG, num_arg);
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	if (line[i] && line[i] != SEPARATOR_CHAR)
+	if (line[i] && line[i] != SEPARATOR_CHAR && line[i] != COMMENT_CHAR && line[i] != ALT_COMMENT_CHAR)
 		error_exit(ERR_LABEL_CHARS);
 	return (value);
 }

@@ -74,7 +74,7 @@ void		get_code(t_champion **champ)
 {
 	char 	*line;
 
-	while (get_next_line((*champ)->fd, &line) > 0)
+	while (gnl_spec((*champ)->fd, &line) > 0)
 	{
 		current_string++;
 		if (is_space_line(line))
