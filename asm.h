@@ -31,7 +31,7 @@ typedef struct		s_instr
 	t_type			type;
 	int				first_byte;
 	t_arg			*args;		//Второй проход будет по всем меткам и с заполнением байт-строки для конкретной инструкции
-	unsigned char	instr_byte;
+	unsigned char	instr_byte; //Один байт на тип аргументов инструкции
 	int 			full_size;
 	char 			*bytestr;
 	struct s_instr	*next;
@@ -165,4 +165,8 @@ void 		free_all(t_champion *champ);
 //utils.c
 int			count_digits(int value, int n);
 char		*reverse_string(char *str, int n);
+
+//gnl_spec.c
+int			gnl_spec(const int fd, char **line);
+
 #endif

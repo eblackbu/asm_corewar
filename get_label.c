@@ -34,7 +34,7 @@ t_instr		*find_instr_line(t_champion **champ, char **line)
 		if (is_space_line(*line))
 		{
 			ft_strdel(line);
-			get_next_line((*champ)->fd, line);
+			gnl_spec((*champ)->fd, line);
 			current_string++;
 			continue ;
 		}

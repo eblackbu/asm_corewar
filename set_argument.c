@@ -17,7 +17,8 @@ char 		*set_arglabel(char *line)
 	label = ft_strncpy(label, line, i);
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	if (line[i] && line[i] != SEPARATOR_CHAR)
+	char a = line[i];
+	if (line[i] && line[i] != SEPARATOR_CHAR && line[i] != ALT_COMMENT_CHAR && line[i] != COMMENT_CHAR)
 		error_exit(ERR_LABEL_CHARS);
 	return (label);
 }

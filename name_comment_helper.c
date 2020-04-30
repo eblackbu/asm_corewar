@@ -19,7 +19,7 @@ void				go_to_new_line(t_champion **champ, char **line)
 {
 	char 	*tmp_line;
 
-	if (get_next_line((*champ)->fd, &tmp_line) < 1)
+	if (gnl_spec((*champ)->fd, &tmp_line) < 1)
 		error_exit(ERR_UNEXP_EOF);
 	*line = ft_strjoin_sp(line, tmp_line, ft_strlen(*line));
 	current_string++;

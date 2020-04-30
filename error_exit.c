@@ -18,6 +18,8 @@ void	error_file(int code)
 		ft_putstr("Error: champion's file not exists\n");
 	else if (code == ERR_FILE_NOT_CREATED)
 		ft_putstr("Error: file .cor can't be created\n");
+	else if (code == ERR_NO_NEW_LINE)
+		ft_putstr("Error: champion's file not ends with \\n\n");
 }
 
 void	error_format(int code)
