@@ -11,11 +11,11 @@ void			value_to_bytes(char **arg, int value, int len)
 
 int				get_arg_len(t_instr **instr, t_arg arg)
 {
-	if (arg.type == T_REG)
+	if (arg.type == REG_CODE)
 		return (REG_BYTE);
-	if (arg.type == T_IND)
+	if (arg.type == IND_CODE)
 		return (IND_BYTE);
-	if (arg.type == T_DIR && (*instr)->type.number > 8 && (*instr)->type.number != 13)
+	if (arg.type == DIR_CODE && (*instr)->type.number > 8 && (*instr)->type.number != 13)
 		return (IND_BYTE);
 	return (DIR_BYTE);
 }

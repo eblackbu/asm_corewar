@@ -72,6 +72,8 @@ int				check_name_line(t_champion **champ, char *line)
 	char 		*tmp_comment;
 
 	tmp_name = find_name(champ, line);
+	if (tmp_name && !(ft_strchr(tmp_name, '\n')))
+		ft_strdel(&line);
 	if (tmp_name)
 	{
 		if ((*champ)->name)
@@ -80,6 +82,9 @@ int				check_name_line(t_champion **champ, char *line)
 		return (1);
 	}
 	tmp_comment = find_comment(champ, line);
+	if (tmp_comment && !(ft_strchr(tmp_comment, '\n')))
+		ft_strdel(&line);
+	//TODO можно попробовать добавить проверку на '\n' для освобождения памяти
 	if (tmp_comment)
 	{
 		if ((*champ)->comment)
@@ -103,7 +108,6 @@ void 			get_name_comment(t_champion **champ)
 	while (flag_found < 2 && gnl_spec((*champ)->fd, &line) > 0)
 	{
 		current_string++;
-		flag_found += check_name_line(champ, line);
-		ft_strdel(&line);
+		flag_found += check_name_line(champ, line); //TODO Разобраться с освобождением памяти
 	}
 }

@@ -25,9 +25,9 @@ int 			get_full_size(t_instr *new_instr)
 		full_size++;
 	i = 0;
 	while (i < new_instr->type.count_args) {
-		if (new_instr->args[i].type == T_REG)
+		if (new_instr->args[i].type == REG_CODE)
 			full_size += REG_BYTE;
-		else if (new_instr->args[i].type == T_IND)
+		else if (new_instr->args[i].type == IND_CODE)
 			full_size += IND_BYTE;
 		else {
 			if (new_instr->type.number > 8 && new_instr->type.number != 13)
