@@ -21,7 +21,9 @@ char 			*get_champ_string(t_champion **champ, char *line, int i)
 	}
 	check_end_of_line(line, i + 1);
 	str = ft_strnew(len);
-	return (ft_strncpy(str, &line[start], len));
+	str = ft_strncpy(str, &line[start], len);
+	ft_strdel(&line);
+	return (str);
 }
 
 char 			*find_name(t_champion **champ, char *line)
@@ -72,8 +74,8 @@ int				check_name_line(t_champion **champ, char *line)
 	char 		*tmp_comment;
 
 	tmp_name = find_name(champ, line);
-	if (tmp_name && !(ft_strchr(tmp_name, '\n')))
-		ft_strdel(&line);
+	//if (tmp_name && !(ft_strchr(tmp_name, '\n')))
+		//ft_strdel(&line);
 	if (tmp_name)
 	{
 		if ((*champ)->name)
@@ -82,8 +84,8 @@ int				check_name_line(t_champion **champ, char *line)
 		return (1);
 	}
 	tmp_comment = find_comment(champ, line);
-	if (tmp_comment && !(ft_strchr(tmp_comment, '\n')))
-		ft_strdel(&line);
+	//if (tmp_comment && !(ft_strchr(tmp_comment, '\n')))
+		//ft_strdel(&line);
 	//TODO можно попробовать добавить проверку на '\n' для освобождения памяти
 	if (tmp_comment)
 	{

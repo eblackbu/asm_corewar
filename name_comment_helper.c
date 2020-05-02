@@ -12,6 +12,7 @@ static char			*ft_strjoin_sp(char **str, char *buf, size_t len)
 	ft_strdel(str);
 	*str = ft_strdup(newstr);
 	ft_strdel(&newstr);
+	ft_strdel(&buf);
 	return (*str);
 }
 
