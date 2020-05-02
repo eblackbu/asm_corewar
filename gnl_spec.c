@@ -53,10 +53,10 @@ int					gnl_spec(const int fd, char **line)
 			break ;
 	}
 	if (!str || !ft_strlen(str))
-	{
-		free(str);
-		return (0);
-	}
+    {
+	    ft_strdel(&str);
+	    return (0);
+    }
 	str = write_in_line(line, &str);
 	return (1);
 }

@@ -9,7 +9,7 @@ void	error_args(int code, int num_arg)
 		ft_putchar('\n');
 	}
 	if (code == ERR_COUNT_ARGS)
-		ft_printf_error("there is more or less arguments in instruction than should be\n");
+		ft_printf_error("invalid count of arguments\n");
 	if (code == ERR_INV_ARG)
 	{
 		ft_printf_error("invalid argument ");
@@ -22,6 +22,12 @@ void	error_args(int code, int num_arg)
 		ft_putnbr(num_arg);
 		ft_putchar('\n');
 	}
+	if (code == ERR_INV_REG)
+    {
+	    ft_printf_error("invalid number of registry, argument ");
+	    ft_putnbr(num_arg);
+	    ft_putchar('\n');
+    }
 	exit(-1);
 }
 

@@ -5,7 +5,8 @@ int 		get_indirent_value(t_champion **champ, t_instr *instr, int arg_num)
 	t_label	*tmp;
 
 	tmp = (*champ)->labels;
-	while (tmp && !ft_strequ(tmp->name, instr->args[arg_num].label_name))
+	char *a = instr->args[arg_num].label_name;
+    while (tmp && !ft_strequ(tmp->name, instr->args[arg_num].label_name))
 		tmp = tmp->next;
 	if (!tmp)
 		error_args(ERR_UNKNOWN_LABEL, arg_num);

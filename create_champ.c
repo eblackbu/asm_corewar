@@ -42,6 +42,8 @@ t_champion 	*create_champ(int fd, char *filename)
 	champ->fd = fd;
 	champ->file_name = set_filename(filename);
 	get_name_comment(&champ);
+	if (!champ->name || !champ->comment)
+	    error_exit(ERR_NULL_HEADER);
 	champ->code = NULL;
 	champ->labels = NULL;
 	get_code(&champ);

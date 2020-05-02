@@ -92,6 +92,7 @@ int				check_name_line(t_champion **champ, char *line)
 		(*champ)->comment = tmp_comment;
 		return (1);
 	}
+	ft_strdel(&line);
 	return (0);
 }
 
@@ -110,4 +111,8 @@ void 			get_name_comment(t_champion **champ)
 		current_string++;
 		flag_found += check_name_line(champ, line); //TODO Разобраться с освобождением памяти
 	}
+	if ((*champ)->name && ft_strlen((*champ)->name) > PROG_NAME_LENGTH)
+	    error_exit(ERR_NAME_LENGTH);
+	if ((*champ)->comment && ft_strlen((*champ)->comment) > COMMENT_LENGTH)
+	    error_exit(ERR_COMMENT_LENGTH);
 }

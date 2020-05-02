@@ -32,6 +32,14 @@ void	error_format(int code)
 		ft_printf_error("champion's name was defined earlier\n");
 	if (code == ERR_DOUBLE_COMMENT)
 		ft_printf_error("champion's comment was defined earlier\n");
+    if (code == ERR_NAME_LENGTH)
+        ft_putstr("Error: champion's name is too long\n");
+    if (code == ERR_COMMENT_LENGTH)
+        ft_putstr("Error: champion's comment is too long\n");
+    if (code == ERR_NULL_HEADER)
+        ft_putstr("Error: there is no name or comment\n");
+	if (code == ERR_NO_CODE)
+        ft_putstr("Error: there is no exec code champion\n");
 }
 
 void 	error_asm(int code)

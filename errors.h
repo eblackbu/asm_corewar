@@ -7,11 +7,15 @@
 # define ERR_FILE_NOT_CREATED 4
 # define ERR_NO_NEW_LINE 5
 
+
 # define ERR_UNEXP_SYM 10
 # define ERR_UNEXP_EOF 11
-
-# define ERR_DOUBLE_NAME 13
-# define ERR_DOUBLE_COMMENT 14
+# define ERR_DOUBLE_NAME 12
+# define ERR_DOUBLE_COMMENT 13
+# define ERR_NAME_LENGTH 14
+# define ERR_COMMENT_LENGTH 15
+# define ERR_NULL_HEADER 16
+# define ERR_NO_CODE 17
 
 # define ERR_LABEL_CHARS 20
 # define ERR_EMPTY_LABEL 21
