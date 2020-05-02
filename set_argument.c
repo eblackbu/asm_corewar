@@ -17,7 +17,6 @@ char 		*set_arglabel(char *line)
 	label = ft_strncpy(label, line, i);
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	char a = line[i];
 	if (line[i] && line[i] != SEPARATOR_CHAR && line[i] != ALT_COMMENT_CHAR && line[i] != COMMENT_CHAR)
 		error_exit(ERR_LABEL_CHARS);
 	return (label);
@@ -31,13 +30,13 @@ int			set_argvalue(char *line, int argtype, int num_arg)
 	value = ft_atoi(line);
 	i = count_digits(value, 10);
 	if (argtype == T_REG && (value <= 0 || value > REG_NUMBER))
-		error_args(ERR_INV_REG, num_arg);
+		error_args(ERR_INV_REG, num_arg + 1);
 	if (line[i] != '\0' && line[i] != ' ' && line[i] != '\t' && line[i] != SEPARATOR_CHAR)
-		error_args(ERR_INV_ARG, num_arg);
+		error_args(ERR_INV_ARG, num_arg + 1);
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
 	if (line[i] && line[i] != SEPARATOR_CHAR && line[i] != COMMENT_CHAR && line[i] != ALT_COMMENT_CHAR)
-		error_exit(ERR_LABEL_CHARS);
+		error_args(ERR_INV_ARG, num_arg + 1);
 	return (value);
 }
 

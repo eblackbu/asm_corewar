@@ -22,7 +22,7 @@ static char			*write_in_line(char **line, char **fileline)
 	i = 0;
 	while ((*fileline)[i] != '\n' && (*fileline)[i])
 		i++;
-	if ((*fileline)[i] == '\0')
+	if ((*fileline)[i] == '\0' && !is_space_line(*fileline))
 		error_exit(ERR_NO_NEW_LINE);
 	*line = ft_strnew(i);
 	ft_strncpy(*line, *fileline, i);

@@ -36,7 +36,7 @@ int		ft_strcmp_spec(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-	if (*s2 == '\0' && (*s1 == ' ' || *s1 == '\t'))
+	if (*s2 == '\0' && (*s1 == ' ' || *s1 == '\t' || *s1 == LABEL_CHAR || *s1 == DIRECT_CHAR))
 		return (1);
 	else
 		return (0);
