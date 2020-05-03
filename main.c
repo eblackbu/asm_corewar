@@ -23,5 +23,6 @@ int		main(int ac, char **av)
 	make_byte_strings(&champ);
 	print_to_file(&champ);
 	free_all(champ);
+	ft_putstr("All is ok, this champion is valid!\n");
 	return (0);
 }
