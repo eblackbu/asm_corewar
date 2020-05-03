@@ -29,5 +29,3 @@ void			fill_labels(t_champion **champ)
 		tmp = tmp->next;
 	}
 }
-
-

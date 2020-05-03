@@ -7,7 +7,6 @@
 # define ERR_FILE_NOT_CREATED 4
 # define ERR_NO_NEW_LINE 5
 
-
 # define ERR_UNEXP_SYM 10
 # define ERR_UNEXP_EOF 11
 # define ERR_DOUBLE_NAME 12

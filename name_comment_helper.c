@@ -18,19 +18,19 @@ static char			*ft_strjoin_sp(char **str, char *buf, size_t len)
 
 void				go_to_new_line(t_champion **champ, char **line)
 {
-	char 	*tmp_line;
+	char			*tmp_line;
 
 	if (gnl_spec((*champ)->fd, &tmp_line) < 1)
 		error_exit(ERR_UNEXP_EOF);
 	*line = ft_strjoin_sp(line, tmp_line, ft_strlen(*line));
-	current_string++;
+	g_current_string++;
 }
 
 void				check_end_of_line(char *line, int i)
 {
 	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
 		i++;
-	if (line[i] != '\0' && line[i] != COMMENT_CHAR && line[i] != ALT_COMMENT_CHAR)
+	if (line[i] != '\0' && line[i] != COMMENT_CHAR && line[i] \
+			!= ALT_COMMENT_CHAR)
 		error_exit(ERR_UNEXP_SYM);
 }
-

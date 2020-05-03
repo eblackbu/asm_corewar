@@ -44,9 +44,10 @@ void		print_exec_code(int fd, t_champion **champ)
 
 void		print_to_file(t_champion **champ)
 {
-	int 	fd;
+	int		fd;
 
-	fd = open((*champ)->file_name, O_WRONLY | O_TRUNC | O_CREAT, S_IREAD | S_IWRITE);
+	fd = open((*champ)->file_name, \
+	O_WRONLY | O_TRUNC | O_CREAT, S_IREAD | S_IWRITE);
 	if (fd < 0)
 		error_exit(ERR_FILE_NOT_CREATED);
 	print_int_hex(fd, COREWAR_EXEC_MAGIC);
@@ -58,4 +59,3 @@ void		print_to_file(t_champion **champ)
 	print_exec_code(fd, champ);
 	close(fd);
 }
-

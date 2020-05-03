@@ -2,7 +2,7 @@
 
 void		free_args(t_arg *args, int count_args)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (i < count_args)
@@ -13,7 +13,7 @@ void		free_args(t_arg *args, int count_args)
 	free(args);
 }
 
-void 		free_instr(t_instr *instr)
+void		free_instr(t_instr *instr)
 {
 	t_instr	*tmp;
 
@@ -42,7 +42,7 @@ void		free_labels(t_label *label)
 	}
 }
 
-void 		free_all(t_champion *champ)
+void		free_all(t_champion *champ)
 {
 	free_instr(champ->code);
 	free_labels(champ->labels);

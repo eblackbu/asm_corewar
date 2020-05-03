@@ -26,7 +26,7 @@ t_instr		*add_new_instr(t_champion **champ, char *line)
 t_instr		*get_instr(t_champion **champ, char *line)
 {
 	t_instr	*tmp;
-	int 	start;
+	int		start;
 
 	start = 0;
 	while (line[start] == ' ' || line[start] == '\t')

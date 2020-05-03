@@ -4,13 +4,13 @@ void		add_new_label(t_champion **champ, char *line, int len)
 {
 	t_label	*tmp;
 	t_label	*tmp_prev;
-	char 	*new_line;
+	char	*new_line;
 
 	tmp = (*champ)->labels;
 	tmp_prev = NULL;
 	while (tmp)
 	{
-		tmp_prev  = tmp;
+		tmp_prev = tmp;
 		tmp = tmp->next;
 	}
 	if (!(tmp = (t_label*)malloc(sizeof(t_label))))
@@ -35,7 +35,7 @@ t_instr		*find_instr_line(t_champion **champ, char **line)
 		{
 			ft_strdel(line);
 			gnl_spec((*champ)->fd, line);
-			current_string++;
+			g_current_string++;
 			continue ;
 		}
 		else if (is_instr(*line))
@@ -54,9 +54,9 @@ t_instr		*find_instr_line(t_champion **champ, char **line)
 
 void		get_label(t_champion **champ, char *line)
 {
-	int 	start;
-	int 	len;
-	char 	*new_line;
+	int		start;
+	int		len;
+	char	*new_line;
 
 	start = 0;
 	len = 0;
@@ -70,4 +70,3 @@ void		get_label(t_champion **champ, char *line)
 	ft_strdel(&line);
 	add_new_label(champ, new_line, len);
 }
-

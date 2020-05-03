@@ -1,8 +1,8 @@
 #include "asm.h"
 
-static char			*ft_strjoin_sp(char **str, char *buf, size_t len)
+char				*ft_strjoin_sp(char **str, char *buf, size_t len)
 {
-	char		*newstr;
+	char			*newstr;
 
 	if (!(newstr = ft_strnew(len + ft_strlen(buf) + 1)))
 		return (NULL);
@@ -14,10 +14,10 @@ static char			*ft_strjoin_sp(char **str, char *buf, size_t len)
 	return (*str);
 }
 
-static char			*write_in_line(char **line, char **fileline)
+char				*write_in_line(char **line, char **fileline)
 {
-	size_t		i;
-	char		*newstr;
+	size_t			i;
+	char			*newstr;
 
 	i = 0;
 	while ((*fileline)[i] != '\n' && (*fileline)[i])
@@ -39,7 +39,7 @@ int					gnl_spec(const int fd, char **line)
 {
 	size_t			count_bytes;
 	char			buf[BUFF_SIZE + 1];
-	static char 	*str;
+	static char		*str;
 
 	if (fd < 0 || !line || read(fd, buf, 0) < 0)
 		return (-1);
@@ -53,11 +53,10 @@ int					gnl_spec(const int fd, char **line)
 			break ;
 	}
 	if (!str || !ft_strlen(str))
-    {
-	    ft_strdel(&str);
-	    return (0);
-    }
+	{
+		ft_strdel(&str);
+		return (0);
+	}
 	str = write_in_line(line, &str);
 	return (1);
 }
-
