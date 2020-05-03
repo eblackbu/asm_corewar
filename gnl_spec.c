@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl_spec.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eblackbu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/03 14:00:06 by eblackbu          #+#    #+#             */
+/*   Updated: 2020/05/03 14:00:07 by eblackbu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
 char				*ft_strjoin_sp(char **str, char *buf, size_t len)
@@ -35,7 +47,7 @@ char				*write_in_line(char **line, char **fileline)
 	return (newstr);
 }
 
-int					gnl_spec(const int fd, char **line)
+int					gnl_spec(int fd, char **line)
 {
 	size_t			count_bytes;
 	char			buf[BUFF_SIZE + 1];
