@@ -39,6 +39,7 @@ int			is_label(char *line)
 	if (line[i] == LABEL_CHAR)
 		return (1);
 	error_exit(ERR_LABEL_CHARS);
+	return (-1);
 }
 
 int			ft_strcmp_spec(const char *s1, const char *s2)
